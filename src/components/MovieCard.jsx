@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
+import PropTypes from "prop-types";
 
 const imageUrl = import.meta.env.VITE_IMG;
 
@@ -15,5 +16,15 @@ function MovieCard ({movie, showLink = true}) {
         </div>
     )
 }
+
+MovieCard.propTypes = {
+    movie: PropTypes.shape({
+        poster_path: PropTypes.string,
+        title: PropTypes.string,
+        vote_average: PropTypes.number,
+        id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+    }).isRequired,
+    showLink: PropTypes.bool,
+};
 
 export default MovieCard;
